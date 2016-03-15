@@ -1,0 +1,26 @@
+using System;
+
+public class Size
+{
+    private double width;
+    private double height;
+
+    public Size(double width, double height)
+    {
+        this.width = width;
+        this.height = height;
+    }
+
+    public static Size GetRotatedSize(Size size, double figureAngle)
+    {
+        double figureCos = Math.Abs(Math.Cos(figureAngle));
+        double figureSin = Math.Abs(Math.Sin(figureAngle));
+
+        double widthRotatedFigure = (figureCos * size.width) + (figureSin * size.height);
+        double heightRotatedFigure = (figureSin * size.width) + (figureCos * size.height);
+
+        Size rotatedSize = new Size(widthRotatedFigure, heightRotatedFigure);
+
+        return rotatedSize;
+    }
+}
